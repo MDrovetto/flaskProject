@@ -108,7 +108,7 @@ def login():
 @app.route('/dashboard/<int:user_id>')
 def dashboard(user_id):
     user = User.query.get(user_id)
-    questions = Question.query.all()
+    questions = Question.query.all()  # Fetch all questions
     return render_template('dashboard.html', user=user, questions=questions)
 
 @app.route('/nova_pergunta', methods=['GET', 'POST'])
@@ -118,18 +118,13 @@ def nova_pergunta():
         content = request.form['content']
         user_id = request.form['user_id']
 
-        # Debug statement to check the user_id
-        print(f"user_id: {user_id}")
-
         new_question = Question(title=title, content=content, user_id=user_id)
         try:
             db.session.add(new_question)
             db.session.commit()
             return redirect(url_for('dashboard', user_id=user_id))
         except Exception as e:
-            # Print the exception to debug
-            print(f"Error: {e}")
-            return 'Error creating question'
+            return f'Error creating question: {e}'
     user_id = request.args.get('user_id')
     return render_template('perguntas.html', user_id=user_id)
 
@@ -140,24 +135,19 @@ def nova_resposta():
         question_id = request.form['question_id']
         user_id = request.form['user_id']
 
-        # Debug statements to check question_id and user_id
-        print(f"question_id: {question_id}, user_id: {user_id}")
-
         new_answer = Answer(content=content, question_id=question_id, user_id=user_id)
         try:
             db.session.add(new_answer)
             db.session.commit()
             return redirect(url_for('dashboard', user_id=user_id))
         except Exception as e:
-            # Print the exception to debug
-            print(f"Error: {e}")
-            return 'Error creating answer'
+            return f'Error creating answer: {e}'
     question_id = request.args.get('question_id')
     user_id = request.args.get('user_id')
     return render_template('respostas.html', question_id=question_id, user_id=user_id)
-
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True)
+
