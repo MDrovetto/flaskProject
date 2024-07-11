@@ -18,16 +18,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Perfil</a>
-                        </li>
-                        <button type="button" class="btn btn-info ms-5" onclick="location.href='{{ url_for('nova_pergunta', user_id=user.id) }}'">Cadastrar Pergunta</button>
+                                                <button type="button" class="btn btn-info ms-5" onclick="location.href='{{ url_for('nova_pergunta', user_id=user.id) }}'">Cadastrar Pergunta</button>
                         <li class="nav-item">
                             <a class="nav-link ms-5" href="{{ url_for('index') }}">Logout</a>
                         </li>

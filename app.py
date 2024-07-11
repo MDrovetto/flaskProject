@@ -146,6 +146,15 @@ def nova_resposta():
     user_id = request.args.get('user_id')
     return render_template('respostas.html', question_id=question_id, user_id=user_id)
 
+@app.route('/perfil/<int:user_id>')
+def perfil(user_id):
+    user = User.query.get(user_id)
+    if user:
+        return render_template('perfil.html', user=user)
+    else:
+        return 'Usuário não encontrado'
+
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
