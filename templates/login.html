@@ -36,7 +36,9 @@
                 <a href="{{ url_for('index') }}">Voltar à página inicial</a>
         </div>
         <div class="main-img">
-            <img src="./assets/img/forum.png" alt="Login" class="main-img">
+            <img src={{  url_for('static', filename='assets/img/forum.png') }}">
+
+             <img src="{{ url_for('static', filename='assets/img/faq.png') }}" class="img-faq" alt="Faq">
         </div>
         </main>
     </div>
