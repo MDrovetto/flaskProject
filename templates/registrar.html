@@ -11,9 +11,10 @@
 </head>
 
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
-    <div class="title">
-    </div>
     <div class="container">
+        <div class="banner">
+            <img src="{{ url_for('static', filename='assets/img/faq.png') }}" class="img-fluid" alt="Faq">
+        </div>
         <div class="form">
             <main class="w-100 m-auto form-wrapper">
                 <form action="{{ url_for('registrar') }}" method="post">
@@ -34,15 +35,11 @@
                     <div class="form-check text-start"></div>
                     <button type="submit" class="btn btn-primary w-100 py-2 my-2">Cadastrar</button>
                 </form>
-                <a href="{{ url_for('index') }}">Voltar a pagina inicial</a>
-            </div>
-            <div class="title">
-            </div>
-            <div class="main-img">
-                <img src="./assets/img/forum.png" alt="Cadastro" class="main-img">
+                <a href="{{ url_for('index') }}">Voltar à página inicial</a>
             </div>
         </main>
     </div>
 </body>
 
 </html>
+

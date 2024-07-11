@@ -12,6 +12,9 @@
 
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
     <div class="container">
+        <div class="banner">
+            <img src="{{ url_for('static', filename='assets/img/faq.png') }}" class="img-fluid" alt="Faq">
+        </div>
         <div class="form">
             <main class="w-100 m-auto form-wrapper">
                 <form action="{{ url_for('login') }}" method="post">
@@ -27,19 +30,15 @@
                         <label for="senha">Senha</label>
                     </div>
 
-                    <input type="checkbox" class="form-check-input" id="remember" name="remember" />
-                    <label class="form-check-label" for="remember">Lembrar</label>
-                    <div class="form-check text-start"></div>
+                    <div class="form-check text-start my-2">
+                        <input type="checkbox" class="form-check-input" id="remember" name="remember">
+                        <label class="form-check-label" for="remember">Lembrar</label>
+                    </div>
                     <button type="submit" class="btn btn-primary w-100 py-2 my-2">Entrar</button>
 
                 </form>
                 <a href="{{ url_for('index') }}">Voltar à página inicial</a>
-        </div>
-        <div class="main-img">
-            <img src={{  url_for('static', filename='assets/img/forum.png') }}">
-
-             <img src="{{ url_for('static', filename='assets/img/faq.png') }}" class="img-faq" alt="Faq">
-        </div>
+            </div>
         </main>
     </div>
 </body>

@@ -40,7 +40,7 @@
                 <tr>
                     <th>Usuário</th>
                     <th>Pergunta</th>
-                    <th>Resposta</th>
+                    <th>Respostas</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -48,10 +48,13 @@
                 {% for question in questions %}
                 <tr>
                     <td>{{ question.user.nome }}</td>
-                    <td>{{ question.title }}</td>
+                    <td>
+                        <h5>{{ question.title }}</h5>
+                        <p>{{ question.content }}</p>
+                    </td>
                     <td>
                         {% for answer in question.answers %}
-                        <p>{{ answer.content }}</p>
+                        <p><strong>{{ answer.user.nome }}:</strong> {{ answer.content }}</p>
                         {% endfor %}
                     </td>
                     <td>

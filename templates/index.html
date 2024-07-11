@@ -10,6 +10,9 @@
 </head>
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
     <div class="container">
+        <div class="banner">
+            <img src="{{ url_for('static', filename='assets/img/faq.png') }}" class="img-fluid" alt="Faq">
+        </div>
         <h1 class="text-center">Bem Vindo ao Forum</h1>
         <div class="d-flex justify-content-center">
             <a href="{{ url_for('login') }}" class="btn btn-secondary mx-2">Login</a>
