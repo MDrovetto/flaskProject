@@ -11,7 +11,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{db_path}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-
 def init_sqlite_db():
     # Ensure the directory exists
     os.makedirs(os.path.dirname(db_path), exist_ok=True)
@@ -29,9 +28,7 @@ def init_sqlite_db():
     conn.commit()
     conn.close()
 
-
 init_sqlite_db()
-
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -39,14 +36,12 @@ class User(db.Model):
     email = db.Column(db.String(150), nullable=False, unique=True)
     senha = db.Column(db.String(150), nullable=False)
 
-
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
     content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     user = db.relationship('User', backref=db.backref('questions', lazy=True))
-
 
 class Answer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -56,11 +51,9 @@ class Answer(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     user = db.relationship('User', backref=db.backref('answers', lazy=True))
 
-
 @app.route('/')
 def index():
     return render_template('index.html')
-
 
 @app.route('/registrar', methods=['GET', 'POST'])
 def registrar():
@@ -83,7 +76,6 @@ def registrar():
             return 'Error registering user'
     return render_template('registrar.html')
 
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -101,12 +93,10 @@ def login():
             return 'Error logging in'
     return render_template('login.html')
 
-
 @app.route('/dashboard/<int:user_id>')
 def dashboard(user_id):
     user = User.query.get(user_id)
-    return f"Welcome {user.nome} to your dashboard"
-
+    return render_template('dashboard.html', user=user)
 
 if __name__ == '__main__':
     # Ensure the tables are created before starting the app
