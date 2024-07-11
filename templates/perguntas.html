@@ -10,58 +10,49 @@
     <title>Help System</title>
 </head>
 
-<body class="d-flex  bg-body-tertiary">
+<body class="d-flex bg-body-tertiary">
     <div class="wrapper">
-
         <img src="./assets/img/faq.jpg" class="img-faq" alt="Faq">
-
-        <nav class="navbar navbar-expand-lg bg-body-tertiary >
-
-            <div class=" container-fluid d-flex">
-            <a class="navbar-brand" href="#">HelpSystem - Dashboard</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"></a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Perfil</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link ms-5" href="#">Logout</a>
-                    </li>
-                </ul>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid d-flex">
+                <a class="navbar-brand" href="#">HelpSystem - Nova Pergunta</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Perfil</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link ms-5" href="{{ url_for('index') }}">Logout</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
-        <div class="container-perguntas">
-            <h1 class="h3 py-4 ms-4">Publique um novo tópico</h1>
-            <hr>
-            <div class="titulo"><label for="" class="ms-4 h5">Título:</label>
-                <input type="text">
-            </div>
-            <div class="descricao">
-                <label for="" class="ms-4 h5">Descrição:</label>
-                <textarea class="px-5 py-5"></textarea>
-            </div>
-            <div class="tags">
-                <label for="" class="ms-4 h5">Tags:</label>
-                <input type="text">
-            </div>
-            <div class="cadastrar-perguntas">
-                <button type="button" class="btn btn-info ms-5 mt-5 ">Cadastrar Pergunta</button>
-            </div>
+
+        <div class="container mt-5">
+            <<form method="POST" action="{{ url_for('nova_pergunta') }}">
+    <div class="mb-3">
+        <label for="title" class="form-label">Título</label>
+        <input type="text" class="form-control" id="title" name="title" required>
+    </div>
+    <div class="mb-3">
+        <label for="content" class="form-label">Conteúdo</label>
+        <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
+    </div>
+    <input type="hidden" name="user_id" value="{{ user_id }}">
+    <button type="submit" class="btn btn-primary">Enviar Pergunta</button>
+</form>
+
         </div>
     </div>
 </body>
-
 </html>
+
